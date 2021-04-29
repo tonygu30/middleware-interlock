@@ -7,7 +7,10 @@ const middlewareInterlock = () => {
     }
   };
   return {
-    createMiddleware({ preMiddleware = prePipeline, combineMiddleware = middleware }) {
+    createMiddleware({
+      preMiddleware = prePipeline,
+      combineMiddleware = middleware,
+    }) {
       middleware = combineMiddleware;
       prePipeline = preMiddleware;
     },
@@ -25,7 +28,7 @@ const middlewareInterlock = () => {
             try {
               payload = await nextValue;
             } catch (e) {
-              if (fnQueue.length && fnQueue[0].name === 'retry') {
+              if (fnQueue.length && fnQueue[0].name === "retry") {
                 payload = () => next(result);
               } else {
                 payload = { error: e };
@@ -35,7 +38,11 @@ const middlewareInterlock = () => {
             const currentFn = queue[0];
             queue.shift();
 
-            if (!payload.error && queue.length && queue[0].name === 'catchError') {
+            if (
+              !payload.error &&
+              queue.length &&
+              queue[0].name === "catchError"
+            ) {
               return payload;
             }
 
@@ -53,5 +60,7 @@ const middlewareInterlock = () => {
     },
   };
 };
+
+export * from "./pipeTool";
 
 export default middlewareInterlock;
