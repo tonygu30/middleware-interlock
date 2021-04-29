@@ -1,10 +1,10 @@
 {
   "name": "middleware-interlock",
   "version": "1.0.0",
-  "description": "We have middleware dispatch retry & catchError",
+  "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack"
+    "prepublish": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
