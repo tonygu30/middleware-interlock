@@ -1,10 +1,11 @@
 {
   "name": "middleware-interlock",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "prepublish": "NODE_ENV=production webpack"
+    "prepublish": "NODE_ENV=production webpack",
+    "build": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
